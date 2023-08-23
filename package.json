@@ -1,0 +1,17 @@
+{
+  "name": "udacity-fullstack-imageprocessing-apps",
+  "version": "1.0.0",
+  "description": "\"fullstack aws apps on image processing\"",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js"
+  },
+  "author": "TuDao",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "jimp": "^0.22.10"
+  }
+}
