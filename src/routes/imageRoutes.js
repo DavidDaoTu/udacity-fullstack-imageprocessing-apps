@@ -48,7 +48,7 @@ router.get("/", async(req, res) => {
                 return_msg = "Failed to send the filtered image to the client!"
                 throw return_msg;
             } else { /* success */
-                // 4: Delete filtered images in tmp folder on local server
+                // 4. Delete filtered images in ./tmp folder on local server
                 let files_name = getAllFilesList();                
                 if (files_name.length) {
                     deleteLocalFiles(files_name);
