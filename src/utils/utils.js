@@ -1,7 +1,8 @@
 import fs from "fs";
 import Jimp from "jimp";
+import path from "path";
 
-
+const __dirname = process.cwd();
 // filterImageFromURL
 // helper function to download, filter, and save the filtered image locally
 // returns the absolute path to the local image
@@ -13,8 +14,9 @@ import Jimp from "jimp";
   return new Promise(async (resolve, reject) => {
     try {
       const photo = await Jimp.read(inputURL);
-      const outpath =
+      const outpath = __dirname +
         "/tmp/filtered." + Math.floor(Math.random() * 2000) + ".jpg";
+      console.log("outpath = ", outpath);
       await photo
         .resize(256, 256) // resize
         .quality(60) // set JPEG quality
@@ -37,4 +39,27 @@ import Jimp from "jimp";
   for (let file of files) {
     fs.unlinkSync(file);
   }
+}
+
+// Get all files name inside img_dir (relative directory)
+export function getAllFilesList(img_dir) {
+  if (!img_dir) {
+    console.log("Default directory would be /tmp/");
+    img_dir = "/tmp/";
+  } 
+
+  // Full Path to the directory containing images
+  let full_path = path.join(__dirname, img_dir);
+  let files_name = [];
+
+  try {
+    files_name = fs.readdirSync(full_path).map(file => {
+                    return full_path + file;
+                  })
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+
+  return files_name;
 }

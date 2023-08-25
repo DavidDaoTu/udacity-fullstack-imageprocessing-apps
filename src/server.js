@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import {router as imageRoutes} from './routes/imageRoutes.js'
 import {filterImageFromURL, deleteLocalFiles} from './utils/utils.js';
 
 
@@ -28,6 +29,9 @@ import {filterImageFromURL, deleteLocalFiles} from './utils/utils.js';
   //   the filtered image file [!!TIP res.sendFile(filteredpath); might be useful]
 
     /**************************************************************************** */
+    
+  // All TODO1 requirement would be implemented inside imageRoutes
+  app.use("/filteredimage", imageRoutes);
 
   //! END @TODO1
   
